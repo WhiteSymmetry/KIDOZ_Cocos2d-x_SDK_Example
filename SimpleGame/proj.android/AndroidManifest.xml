@@ -26,6 +26,7 @@
             android:configChanges="screenLayout|screenSize|orientation|keyboardHidden|keyboard"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
+            android:hardwareAccelerated="false"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

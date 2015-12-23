@@ -26,8 +26,10 @@ package org.cocos2dx.simplegame;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import com.kidoz.sdk.api.FeedButton;
+import com.kidoz.sdk.api.KidozBanner;
 import com.kidoz.sdk.api.KidozSDK;
 import com.kidoz.sdk.api.PanelView;
+import com.kidoz.sdk.api.ui_views.kidoz_banner.KidozBannerListener;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -37,18 +39,37 @@ import android.widget.RelativeLayout;
 public class SimpleGame extends Cocos2dxActivity {
 	private FeedButton mFeedButton;
 	private PanelView mPanelView;
+	private KidozBanner mKidozBanner;
+
+	private RelativeLayout mSdkContainer;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// Initialize sdk instance
+		// Initialize SDK instance
 		KidozSDK.initialize(SimpleGame.this, "5",
 				"i0tnrdwdtq0dm36cqcpg6uyuwupkj76s");
 
-		// Create a container that will hold kidoz elements
-		RelativeLayout mSdkContainer = new RelativeLayout(getContext());
+		// Create a container that will hold KIDOZ elements
+		mSdkContainer = new RelativeLayout(getContext());
 
-		// Create Kidoz Feed Button instance
+		// Add container to main application view
+		addContentView(mSdkContainer, new LayoutParams(
+				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+
+		/** Initiate and add Feed Button view */
+		addFeedButtonToView();
+
+		/** Initiate and add Panel view */
+		addPanelToView();
+
+		/** Initiate and add Banner view */
+		addBannerToView();
+	}
+
+	/** Initiate and add Feed Button view */
+	private void addFeedButtonToView() {
+		// Create KIDOZ Feed Button instance
 		mFeedButton = new FeedButton(this);
 
 		// Add button to container and place it as desired
@@ -56,18 +77,36 @@ public class SimpleGame extends Cocos2dxActivity {
 				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 		mSdkContainer.addView(mFeedButton, params);
+	}
 
-		// Create Kidoz Panel View instance
+	/** Initiate and add Panel view */
+	private void addPanelToView() {
+		// Create KIDOZ Panel View instance
 		mPanelView = new PanelView(this);
 		mPanelView.setPanelColor(Color.CYAN); // Default color is White
-		
+
 		// Add panel to container and place it as desired
 		mSdkContainer.addView(mPanelView, new LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+	}
 
-		// Add container to main application view
-		addContentView(mSdkContainer, new LayoutParams(
-				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+	/** Initiate and add Banner view */
+	private void addBannerToView() {
+		// Create KIDOZ Banner View View instance
+		mKidozBanner = new KidozBanner(this);
+		mKidozBanner.setKidozBannerListener(new KidozBannerListener() {
+			@Override
+			public void onBannerReady() {
+				super.onBannerReady();
+				mKidozBanner.showBanner();
+			}
+		});
+
+		// Add banner to container and place it as desired
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		params.addRule(RelativeLayout.ALIGN_LEFT);
+		mSdkContainer.addView(mKidozBanner, params);
 	}
 
 	@Override
