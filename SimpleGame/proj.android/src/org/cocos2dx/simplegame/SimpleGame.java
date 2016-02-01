@@ -25,30 +25,34 @@ package org.cocos2dx.simplegame;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
-import com.kidoz.sdk.api.FeedButton;
-import com.kidoz.sdk.api.KidozBanner;
-import com.kidoz.sdk.api.KidozSDK;
-import com.kidoz.sdk.api.PanelView;
-import com.kidoz.sdk.api.ui_views.kidoz_banner.KidozBannerListener;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.kidoz.sdk.api.FeedButton;
+import com.kidoz.sdk.api.FlexiView;
+import com.kidoz.sdk.api.KidozBanner;
+import com.kidoz.sdk.api.KidozSDK;
+import com.kidoz.sdk.api.PanelView;
+import com.kidoz.sdk.api.interfaces.FlexiViewListener;
+import com.kidoz.sdk.api.ui_views.flexi_view.FLEXI_POSITION;
+import com.kidoz.sdk.api.ui_views.kidoz_banner.KidozBannerListener;
 
 public class SimpleGame extends Cocos2dxActivity {
 	private FeedButton mFeedButton;
 	private PanelView mPanelView;
 	private KidozBanner mKidozBanner;
-
+	private FlexiView mFlexiView;
+	
 	private RelativeLayout mSdkContainer;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		// Initialize SDK instance
-		KidozSDK.initialize(SimpleGame.this, "5",
-				"i0tnrdwdtq0dm36cqcpg6uyuwupkj76s");
+		KidozSDK.initialize(SimpleGame.this, "5","i0tnrdwdtq0dm36cqcpg6uyuwupkj76s");
 
 		// Create a container that will hold KIDOZ elements
 		mSdkContainer = new RelativeLayout(getContext());
@@ -65,8 +69,12 @@ public class SimpleGame extends Cocos2dxActivity {
 
 		/** Initiate and add Banner view */
 		addBannerToView();
+		
+		/** Initiate and add Flexi view */
+		addFlexiPointToView();
 	}
 
+	
 	/** Initiate and add Feed Button view */
 	private void addFeedButtonToView() {
 		// Create KIDOZ Feed Button instance
@@ -108,6 +116,41 @@ public class SimpleGame extends Cocos2dxActivity {
 		params.addRule(RelativeLayout.ALIGN_LEFT);
 		mSdkContainer.addView(mKidozBanner, params);
 	}
+	
+	private void addFlexiPointToView() {
+		mFlexiView = (new FlexiView(SimpleGame.this));
+		mFlexiView.setAutoShow(true);
+		mFlexiView.setFlexiViewInitialPosition(FLEXI_POSITION.MIDDLE_CENTER);
+		mFlexiView.setOnFlexiViewEventListener(new FlexiViewListener() {
+			@Override
+			public void onViewReady() {
+				super.onViewReady();
+				Toast.makeText(SimpleGame.this, "Flexi Ready",
+						Toast.LENGTH_SHORT).show();
+			}
+
+			@Override
+			public void onViewHidden() {
+				super.onViewHidden();
+				Toast.makeText(SimpleGame.this, "Flexi Hidden",
+						Toast.LENGTH_SHORT).show();
+			}
+
+			@Override
+			public void onViewVisible() {
+				super.onViewVisible();
+				Toast.makeText(SimpleGame.this, "Flexi Visible",
+						Toast.LENGTH_SHORT).show();
+			}
+		});
+		
+		// Add flexi view to container  
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		params.addRule(RelativeLayout.ALIGN_LEFT);
+		mSdkContainer.addView(mFlexiView, params);
+	}
+
 
 	@Override
 	protected void onStop() {
