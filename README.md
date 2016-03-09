@@ -26,6 +26,9 @@ On Eclipse ADT you can include the library by doing the folowing:
  - Copy all `.so`. files from KidozSDK/libs/armeabi folder to  your_project/libs/armeabi folder:
  - Import `recyclerview` library project to your Eclipse workspace.
  - Right click on your project select `Properties`,in appeared window select `Android` in the library section add `recyclerview` as a library project:
+ 
+##### Sample application base on CocosDx 3.x download here:
+ **https://s3.amazonaws.com/kidoz.test.bucket/CocosSample_3.x_project.zip**
 
 ####	For more info:
 
