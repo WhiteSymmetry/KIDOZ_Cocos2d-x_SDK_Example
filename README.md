@@ -33,3 +33,8 @@ On Eclipse ADT you can include the library by doing the folowing:
 ####	For more info:
 
 **How to Get Kidoz SDK and the manuall of how to add it to Eclipse ADT please refer to  https://github.com/Kidoz-SDK/KIDOZ_Android_SDK_Example-Eclipse-ADT **
+
+KIDOZ SDK Cocos2Dx Sample App (iOS)
+=======================================
+
+
