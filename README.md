@@ -41,14 +41,15 @@ KIDOZ SDK Cocos2Dx Sample App (iOS)
 
 ### Sample App
 The sample app can be found in the following directory: /KIDOZSample/proj.ios_mac
+
 The app shows the feed button and the panel widget.
 
 
 ### Adding KIDOZ SDK to your app
 
-1. copy and add the KidozSDK.bundle and Kidoz.framework files to your project into the Frameworks section in xcode.
-2. select add files to the project while selecting the ios folder (make sure that the copy option is checked) and select the KIDOZCocos2dBridge.h and KIDOZCocos2dBridge.mm files.
-3. in  AppDelegate.cpp add the following lines: <br>
+1. Copy and add the KidozSDK.bundle and Kidoz.framework files to your project into the Frameworks section in xcode.
+2. Select add files to the project while selecting the ios folder (make sure that the copy option is checked) and select the KIDOZCocos2dBridge.h and KIDOZCocos2dBridge.mm files.
+3. In  AppDelegate.cpp add the following lines: <br>
 ```#include "KIDOZCocos2dBridge.h"``` <br>
 Add the following functions calls to AppDelegate::applicationDidFinishLaunching()
  ```KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();```
