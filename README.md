@@ -39,4 +39,25 @@ On Eclipse ADT you can include the library by doing the folowing:
 KIDOZ SDK Cocos2Dx Sample App (iOS)
 =======================================
 
+### Sample App
+The sample app can be found in the following directory: /KIDOZSample/proj.ios_mac
+The app shows the feed button and the panel widget.
+
+
+### Adding KIDOZ SDK to your app
+
+1. copy and add the KidozSDK.bundle and Kidoz.framework files to your project into the Frameworks section in xcode.
+2. select add files to the project while selecting the ios folder (make sure that the copy option is checked) and select the KIDOZCocos2dBridge.h and KIDOZCocos2dBridge.mm files.
+3. in  AppDelegate.cpp add the following lines: <br>
+```#include "KIDOZCocos2dBridge.h"``` <br>
+Add the following functions calls to AppDelegate::applicationDidFinishLaunching()
+ ```KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();```
+```KIDOZBridge->initSDK(<your publisher id>,<security token>);```
+4. In your app scene file (in the demo code HellowWorldScene.cpp add the following lines: according to your selected KIDOZ widgets. Add the following include file: #include "KIDOZCocos2dBridge.h"
+5. ```KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();```
+   For panel use: ```KIDOZBridge->addPanelView(<panel position>, <handle position>);```
+   For feed button use" ```KIDOZBridge->addFeedButton(<x position>, <y position>);```
+6. You can add listeners by calling ```KIDOZBridge->setPanelReadyListener(panelReady);```
+7. Other listeners can be found in KIDOZCocos2dBridge.h file
+
 
