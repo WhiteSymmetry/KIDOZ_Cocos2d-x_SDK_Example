@@ -1,7 +1,7 @@
 <a href="url"><img src="https://github.com/Kidoz-SDK/Kidoz_Android_SDK_Example/blob/master/graphics/App%20icon.png" align="left" height="72" width="72" ></a>
 
-KIDOZ SDK Cocos2Dx Sample App
-=================================
+KIDOZ SDK Cocos2Dx Sample App (android)
+=======================================
 
 
 ### Including SDK in projects using CocosDx version 2.2.x
