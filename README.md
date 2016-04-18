@@ -30,7 +30,7 @@ On Eclipse ADT you can include the library by doing the folowing:
 ##### Sample application base on CocosDx 3.x download here:
  **https://s3.amazonaws.com/kidoz.test.bucket/CocosSample_3.x_project.zip**
 
-####	Eclipse ADT:
+####	Eclipse ADT
 
 **How to Get Kidoz SDK and the manuall of how to add it to Eclipse ADT please refer to  https://github.com/Kidoz-SDK/KIDOZ_Android_SDK_Example-Eclipse-ADT **
 
