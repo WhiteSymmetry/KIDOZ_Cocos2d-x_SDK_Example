@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-
+#include "KIDOZCocos2dBridge.h"
 USING_NS_CC;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320);
@@ -71,7 +71,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
     {        
         director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
     }
-
+    
+    //KIODZ SDK Init
+    KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();
+    KIDOZBridge->initSDK("5", "i0tnrdwdtq0dm36cqcpg6uyuwupkj76s");
     register_all_packages();
 
     // create a scene. it's an autorelease object

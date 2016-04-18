@@ -1,5 +1,5 @@
 #include "HelloWorldScene.h"
-
+#include "KIDOZCocos2dBridge.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -20,6 +20,7 @@ Scene* HelloWorld::createScene()
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
+    
     //////////////////////////////
     // 1. super init first
     if ( !Layer::init() )
@@ -71,7 +72,11 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
-    
+   
+    KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();
+    KIDOZBridge->setPanelReadyListener(panelReady);
+    KIDOZBridge->addPanelView(0, 1);
+    KIDOZBridge->addFeedButton(0, 0);
     return true;
 }
 
@@ -83,4 +88,9 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+}
+
+void HelloWorld::panelReady(int value)
+{
+    printf("panel ready c++");
 }

@@ -5,6 +5,8 @@
 
 class HelloWorld : public cocos2d::Layer
 {
+private:
+    
 public:
     static cocos2d::Scene* createScene();
 
@@ -12,6 +14,8 @@ public:
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
+    
+    static void panelReady(int value);
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);

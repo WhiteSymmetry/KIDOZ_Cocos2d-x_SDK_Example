@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110705321CC4D42D00BA7D83 /* KidozSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 110705301CC4D42C00BA7D83 /* KidozSDK.bundle */; };
+		110705331CC4D42D00BA7D83 /* KidozSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110705311CC4D42D00BA7D83 /* KidozSDK.framework */; };
+		110705361CC4DC7B00BA7D83 /* KIDOZCocos2dBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 110705351CC4DC7B00BA7D83 /* KIDOZCocos2dBridge.mm */; };
+		110705381CC4EFA200BA7D83 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 110705371CC4EFA200BA7D83 /* libsqlite3.0.tbd */; };
+		1107053A1CC4F05000BA7D83 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110705391CC4F05000BA7D83 /* SystemConfiguration.framework */; };
+		1107053C1CC4F05A00BA7D83 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1107053B1CC4F05A00BA7D83 /* AdSupport.framework */; };
+		1107053E1CC4F09300BA7D83 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1107053D1CC4F09300BA7D83 /* CoreText.framework */; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -103,6 +110,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		110705301CC4D42C00BA7D83 /* KidozSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KidozSDK.bundle; sourceTree = "<group>"; };
+		110705311CC4D42D00BA7D83 /* KidozSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KidozSDK.framework; sourceTree = "<group>"; };
+		110705341CC4DC7B00BA7D83 /* KIDOZCocos2dBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KIDOZCocos2dBridge.h; path = ios/KIDOZCocos2dBridge.h; sourceTree = SOURCE_ROOT; };
+		110705351CC4DC7B00BA7D83 /* KIDOZCocos2dBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = KIDOZCocos2dBridge.mm; path = ios/KIDOZCocos2dBridge.mm; sourceTree = SOURCE_ROOT; };
+		110705371CC4EFA200BA7D83 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
+		110705391CC4F05000BA7D83 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		1107053B1CC4F05A00BA7D83 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
+		1107053D1CC4F09300BA7D83 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -170,6 +185,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1107053E1CC4F09300BA7D83 /* CoreText.framework in Frameworks */,
+				1107053C1CC4F05A00BA7D83 /* AdSupport.framework in Frameworks */,
+				1107053A1CC4F05000BA7D83 /* SystemConfiguration.framework in Frameworks */,
+				110705381CC4EFA200BA7D83 /* libsqlite3.0.tbd in Frameworks */,
 				ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
@@ -177,6 +196,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				110705331CC4D42D00BA7D83 /* KidozSDK.framework in Frameworks */,
 				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
 				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
 				BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */,
@@ -213,6 +233,8 @@
 			children = (
 				5087E77117EB970100C73F5D /* Icons */,
 				503AE0FA17EB989F00D1A890 /* AppController.h */,
+				110705341CC4DC7B00BA7D83 /* KIDOZCocos2dBridge.h */,
+				110705351CC4DC7B00BA7D83 /* KIDOZCocos2dBridge.mm */,
 				503AE0FB17EB989F00D1A890 /* AppController.mm */,
 				503AE0FC17EB989F00D1A890 /* main.m */,
 				503AE0FD17EB989F00D1A890 /* Prefix.pch */,
@@ -258,6 +280,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1107053D1CC4F09300BA7D83 /* CoreText.framework */,
+				1107053B1CC4F05A00BA7D83 /* AdSupport.framework */,
+				110705391CC4F05000BA7D83 /* SystemConfiguration.framework */,
+				110705371CC4EFA200BA7D83 /* libsqlite3.0.tbd */,
 				ED545A7D1B68A1FA00C3958E /* libiconv.dylib */,
 				ED545A7B1B68A1F400C3958E /* libiconv.dylib */,
 				8262943D1AAF051F00CB7CF7 /* Security.framework */,
@@ -277,6 +303,8 @@
 				BF170DB012928DE900B8313A /* OpenGLES.framework */,
 				BF1C47EA1293683800B63C5D /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				110705301CC4D42C00BA7D83 /* KidozSDK.bundle */,
+				110705311CC4D42D00BA7D83 /* KidozSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -458,6 +486,7 @@
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
+				110705321CC4D42D00BA7D83 /* KidozSDK.bundle in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
@@ -496,6 +525,7 @@
 			files = (
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				110705361CC4DC7B00BA7D83 /* KIDOZCocos2dBridge.mm in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -535,6 +565,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -572,6 +606,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
