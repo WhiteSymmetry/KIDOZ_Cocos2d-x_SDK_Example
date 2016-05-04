@@ -32,7 +32,7 @@ On Eclipse ADT you can include the library by doing the folowing:
 
 ####	Eclipse ADT
 
-**How to Get Kidoz SDK and the manuall of how to add it to Eclipse ADT please refer to  https://github.com/Kidoz-SDK/KIDOZ_Android_SDK_Example-Eclipse-ADT **
+**How to use Kidoz SDK and it to Eclipse ADT please refer to https://github.com/Kidoz-SDK/KIDOZ_Android_SDK_Example-Eclipse-ADT **
 
 
 
