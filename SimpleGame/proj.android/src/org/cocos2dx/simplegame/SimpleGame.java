@@ -25,15 +25,20 @@ package org.cocos2dx.simplegame;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
-import android.graphics.Color;
+
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.kidoz.sdk.api.FeedButton;
 import com.kidoz.sdk.api.FlexiView;
 import com.kidoz.sdk.api.KidozBanner;
+import com.kidoz.sdk.api.KidozInterstitial;
 import com.kidoz.sdk.api.KidozSDK;
 import com.kidoz.sdk.api.PanelView;
 import com.kidoz.sdk.api.interfaces.FlexiViewListener;
@@ -45,14 +50,16 @@ public class SimpleGame extends Cocos2dxActivity {
 	private PanelView mPanelView;
 	private KidozBanner mKidozBanner;
 	private FlexiView mFlexiView;
-	
+	private KidozInterstitial mInterstitial;
+
 	private RelativeLayout mSdkContainer;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		// Initialize SDK instance
-		KidozSDK.initialize(SimpleGame.this, "5","i0tnrdwdtq0dm36cqcpg6uyuwupkj76s");
+		KidozSDK.initialize(SimpleGame.this, "5",
+				"i0tnrdwdtq0dm36cqcpg6uyuwupkj76s");
 
 		// Create a container that will hold KIDOZ elements
 		mSdkContainer = new RelativeLayout(getContext());
@@ -69,12 +76,14 @@ public class SimpleGame extends Cocos2dxActivity {
 
 		/** Initiate and add Banner view */
 		addBannerToView();
-		
+
 		/** Initiate and add Flexi view */
 		addFlexiPointToView();
+
+		/** Initiate and add Flexi view */
+		initInterstitial();
 	}
 
-	
 	/** Initiate and add Feed Button view */
 	private void addFeedButtonToView() {
 		// Create KIDOZ Feed Button instance
@@ -91,8 +100,7 @@ public class SimpleGame extends Cocos2dxActivity {
 	private void addPanelToView() {
 		// Create KIDOZ Panel View instance
 		mPanelView = new PanelView(this);
-		mPanelView.setPanelColor(Color.CYAN); // Default color is White
-
+		
 		// Add panel to container and place it as desired
 		mSdkContainer.addView(mPanelView, new LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
@@ -116,7 +124,7 @@ public class SimpleGame extends Cocos2dxActivity {
 		params.addRule(RelativeLayout.ALIGN_LEFT);
 		mSdkContainer.addView(mKidozBanner, params);
 	}
-	
+
 	private void addFlexiPointToView() {
 		mFlexiView = (new FlexiView(SimpleGame.this));
 		mFlexiView.setAutoShow(true);
@@ -143,14 +151,36 @@ public class SimpleGame extends Cocos2dxActivity {
 						Toast.LENGTH_SHORT).show();
 			}
 		});
-		
-		// Add flexi view to container  
+
+		// Add flexi view to container
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-		params.addRule(RelativeLayout.ALIGN_LEFT);
 		mSdkContainer.addView(mFlexiView, params);
 	}
 
+	/** Initiate interstitial view */
+	private void initInterstitial() {
+		mInterstitial = new KidozInterstitial(this);
+
+		Button launchInterstitialBtn = new Button(this);
+		launchInterstitialBtn.setText("Open\nInterstitial");
+
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+				ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT);
+		params.addRule(RelativeLayout.CENTER_VERTICAL);
+		params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+
+		launchInterstitialBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mInterstitial.show();
+			}
+		});
+
+		mSdkContainer.addView(launchInterstitialBtn, params);
+	}
 
 	@Override
 	protected void onStop() {
