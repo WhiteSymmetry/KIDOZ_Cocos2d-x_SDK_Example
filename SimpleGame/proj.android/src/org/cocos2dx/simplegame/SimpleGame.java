@@ -25,7 +25,6 @@ package org.cocos2dx.simplegame;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
-
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,7 +33,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 import com.kidoz.sdk.api.FeedButton;
 import com.kidoz.sdk.api.FlexiView;
 import com.kidoz.sdk.api.KidozBanner;
@@ -43,6 +41,7 @@ import com.kidoz.sdk.api.KidozSDK;
 import com.kidoz.sdk.api.PanelView;
 import com.kidoz.sdk.api.interfaces.FlexiViewListener;
 import com.kidoz.sdk.api.ui_views.flexi_view.FLEXI_POSITION;
+import com.kidoz.sdk.api.ui_views.interstitial.BaseInterstitial;
 import com.kidoz.sdk.api.ui_views.kidoz_banner.KidozBannerListener;
 
 public class SimpleGame extends Cocos2dxActivity {
@@ -100,7 +99,7 @@ public class SimpleGame extends Cocos2dxActivity {
 	private void addPanelToView() {
 		// Create KIDOZ Panel View instance
 		mPanelView = new PanelView(this);
-		
+
 		// Add panel to container and place it as desired
 		mSdkContainer.addView(mPanelView, new LayoutParams(
 				LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
@@ -161,6 +160,25 @@ public class SimpleGame extends Cocos2dxActivity {
 	/** Initiate interstitial view */
 	private void initInterstitial() {
 		mInterstitial = new KidozInterstitial(this);
+		mInterstitial
+				.setOnInterstitialEventListener(new BaseInterstitial.IOnInterstitialEventListener() {
+					@Override
+					public void onClosed() {
+						Toast.makeText(SimpleGame.this, "Interstitial Closed",
+								Toast.LENGTH_SHORT).show();
+					}
+
+					@Override
+					public void onOpened() {
+						Toast.makeText(SimpleGame.this, "Interstitial Opened",
+								Toast.LENGTH_SHORT).show();
+					}
+
+					@Override
+					public void onReady() {
+						mInterstitial.show();
+					}
+				});
 
 		Button launchInterstitialBtn = new Button(this);
 		launchInterstitialBtn.setText("Open\nInterstitial");
@@ -175,7 +193,14 @@ public class SimpleGame extends Cocos2dxActivity {
 
 			@Override
 			public void onClick(View v) {
-				mInterstitial.show();
+
+				if (mInterstitial.isLoaded() == false) {
+					mInterstitial.loadAd();
+					Toast.makeText(SimpleGame.this, "Loading...",
+							Toast.LENGTH_SHORT).show();
+				} else {
+					mInterstitial.show();
+				}
 			}
 		});
 
