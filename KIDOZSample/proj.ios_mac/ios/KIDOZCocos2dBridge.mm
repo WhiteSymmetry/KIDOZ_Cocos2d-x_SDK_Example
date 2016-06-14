@@ -162,6 +162,12 @@ bool KIDOZCocos2dBridge::isPanelExpanded()
     
     return NO;
 }
+
+void KIDOZCocos2dBridge::hidePanel(bool hide)
+{
+    
+    [mCocos2dPanel hide:hide];
+}
 //------------------------
 //------------------------
 int KIDOZCocos2dBridge::addBannerView(){
@@ -228,7 +234,8 @@ int KIDOZCocos2dBridge::initSDK(char *pubID, char *secToken){
     
     mCocos2dListnerObject = [[KIDOZCocos2dObjectListners alloc]init];
     [mCocos2dListnerObject retain];
-    [[KidozSDK instance]init:nil publisherID:publisherID securetyToken:secureityToken withDelegate:nil withExtensionType:@"Cocos2d"];
+//    [[KidozSDK instance]init:nil publisherID:publisherID securetyToken:secureityToken withDelegate:nil withExtensionType:@"Cocos2d"];
+    [[KidozSDK instance]init:nil publisherID:publisherID securityToken:secureityToken withDelegate:nil withExtensionType:KIDOZ_EXTENSION_TYPE_COCOS_DX resourceInExternalBundle:YES];
     [KIDOZUtils setResourceInBundle:YES];
     return 0;
 }

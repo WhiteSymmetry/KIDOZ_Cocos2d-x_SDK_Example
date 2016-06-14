@@ -54,11 +54,22 @@ typedef enum PanelPosition
 
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
+@protocol KIDOZInterstitialProtocol <NSObject>
+
+-(void) KIDOZInterstitialOpened:(int)feedID;
+-(void) KIDOZInterstitialClosed:(int)feedID;
+-(void) KIDOZInterstitialReady:(int)feedID;
+
+@end
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
 typedef enum HandlePosition
 {
     hpLeft,
     hpCenter,
-    hpRight
+    hpRight,
+    hpNone
 }KIDOZHandlePosition;
 
 //-----------------------------------------------------------------------
@@ -89,5 +100,21 @@ typedef enum BannerPosition
 #define KIDOZ_SDK_BANNER_RESOURCES_DONE_LOADING_LISTENER_ID @"KIDOZ_SDK_BANNER_RESOURCES_DONE_LOADING"
 #define KIDOZ_SDK_PLAYER_STARTED_LISTENER_ID @"KIDOZ_SDK_PLAYER_STARTED_LISTENER_ID"
 #define KIDOZ_SDK_PLAYER_ENDED_LISTENER_ID @"KIDOZ_SDK_PLAYER_ENDED_LISTENER_ID"
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+
+typedef enum KIDOZExtensionType
+{
+    KIDOZ_EXTENSION_TYPE_ANDROID = 1,
+    KIDOZ_EXTENSION_TYPE_ECLIPSE = 2,
+    KIDOZ_EXTENSION_TYPE_COCOS_DX = 3,
+    KIDOZ_EXTENSION_TYPE_ADOBE_AIR = 4,
+    KIDOZ_EXTENSION_TYPE_UNITY = 5,
+    KIDOZ_EXTENSION_TYPE_GMS = 6,
+    KIDOZ_EXTENSION_TYPE_CORONA = 7,
+    KIDOZ_EXTENSION_TYPE_XCODE = 8
+}KIDOZExtensionType;
+
 
 #endif /* KIDOZInterfaces_h */

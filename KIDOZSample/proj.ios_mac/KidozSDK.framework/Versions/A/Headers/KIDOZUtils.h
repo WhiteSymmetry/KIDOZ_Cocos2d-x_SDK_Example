@@ -9,6 +9,7 @@
 #ifndef Utils_h
 #define Utils_h
 #import <UIKit/UIKit.h>
+#import "KIDOZinterfaces.h"
 @interface KIDOZUtils : NSObject
 
 +(long) getTimeStemp;
@@ -17,14 +18,16 @@
 +(NSString*) getTimeStempAsString;
 +(NSString*) sha1:(NSString*)input;
 +(NSString *) getNSStringFromDic:(NSDictionary *)dic;
++(NSString *) getNSStringFromArray:(NSArray *)array;
 +(NSDictionary *) getDictionaryFromJSONData:(NSData *)data;
 +(UIColor *) getUIColorFromString:(NSString *)strColor;
 +(NSString *)getStringFromNSData:(NSData *)data;
 +(NSString *)getKidozDirPath;
 +(NSString *)getResourceFullName:(NSString *)resourceName;
 +(void)setResourceInBundle:(BOOL)inBundle;
-+(void)setExtensionName:(NSString *)extensionName;
++(void)setExtensionName:(KIDOZExtensionType)extensionName;
 +(NSString *)getExtensionName;
++(NSString *)getSDKVersion;
 @end
 
 #endif /* Utils_h */

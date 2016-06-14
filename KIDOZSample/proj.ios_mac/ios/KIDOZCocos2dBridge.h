@@ -42,6 +42,8 @@ public:
     int expandPanelView();
     
     bool isPanelExpanded();
+    
+    void hidePanel(bool hide);
     //------------------------
     //------------------------
     int addBannerView();

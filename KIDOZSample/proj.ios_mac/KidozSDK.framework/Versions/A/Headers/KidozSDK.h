@@ -32,10 +32,10 @@
 -(void)hide:(BOOL)hide;
 /*
  Description:
- Expend the panel programmatically
+ expand the panel programmatically
 
  */
--(void)expend;
+-(void)expand;
 /*
  Description:
  collapse the panel programmatically
@@ -50,6 +50,7 @@
  */
 -(BOOL)getIsPanelExpanded;
 @end
+
 
 
 //-----------------------------------------------------------------------
@@ -85,6 +86,39 @@
 -(void)close;
 @end
 
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+/*
+ Description:
+ the interstitial
+ 
+ */
+@interface KIDOZInterstitialObject : NSObject
+-(id)initWithViewController:(UIViewController *)targetViewController delegate:(id<KIDOZInterstitialProtocol>)delegate;
+/*
+ Description:
+ load a new add
+ 
+ Parameters:
+ 
+ */
+-(void)loadAd;
+/*
+ Description:
+ open the interstitial programmatically.
+ 
+ */
+-(void)show;
+/*
+ Description:
+ close the the interstitial view programmatically
+ 
+ */
+-(void)close;
+@end
+
+
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------
 @protocol KIDOZSDKProtocol <NSObject>
@@ -102,7 +136,7 @@
     UIView *mView;
     UIWindow *mWindow;
     NSString *mPublisherID;
-    NSString *mSecuretyToken;
+    NSString *mSecurityToken;
     
     
 }
@@ -122,7 +156,7 @@
  KIDOZSDKProtocol   - delegate for general SDK notifications
  
  */
--(void) init:(UIWindow *)window publisherID:(NSString *)publisherID securetyToken:(NSString *)securetyToken withDelegate:(id<KIDOZSDKProtocol>)delegate;
+-(void) init:(UIWindow *)window publisherID:(NSString *)publisherID securityToken:(NSString *)securityToken withDelegate:(id<KIDOZSDKProtocol>)delegate;
 
 
 /*
@@ -131,13 +165,14 @@
  This function should be called from the appdelegate module.
  
  Parameters:
- UIWindow           - the app window
- NSString           - the publisher ID
- NSString           - the securety token
- KIDOZSDKProtocol   - delegate for general SDK notifications
- NSString           - the extension name
+ UIWindow               - the app window
+ NSString               - the publisher ID
+ NSString               - the securety token
+ KIDOZSDKProtocol       - delegate for general SDK notifications
+ KIDOZExtensionType     - the extension enum
+ BOOL                   - if the resources are located in KidozSDK.bundle
  */
--(void) init:(UIWindow *)window publisherID:(NSString *)publisherID securetyToken:(NSString *)securetyToken withDelegate:(id<KIDOZSDKProtocol>)delegate withExtensionType:(NSString *)extensionType;
+-(void) init:(UIWindow *)window publisherID:(NSString *)publisherID securityToken:(NSString *)securityToken withDelegate:(id<KIDOZSDKProtocol>)delegate withExtensionType:(KIDOZExtensionType)extensionType resourceInExternalBundle:(BOOL) resourceInExternalBundle;
 
 /*
 Description:
@@ -182,6 +217,15 @@ Description:
  */
 -(KIDOZPanelObject *) generatePanelWithViewController:(UIViewController *)targetView panelPosition:(KIDOZPanelPosition) panelPosition withHandlePosition:(KIDOZHandlePosition)handlePosition delegate:(id<KIDOZPanelProtocol>)delegate  openDelay:(float)openDelay openDuration:(float)openDuration;
 
+/*
+ Description:
+ Generate an interstitial object
+ 
+ Parameters:
+ UIViewController           - the targetViewController
+ KIDOZInterstitialProtocol  - protocol
+*/
+-(KIDOZInterstitialObject *) generateInterstitialWithViewController:(UIViewController *)targetView delegate:(id<KIDOZInterstitialProtocol>)delegate;
 @end
 
 
