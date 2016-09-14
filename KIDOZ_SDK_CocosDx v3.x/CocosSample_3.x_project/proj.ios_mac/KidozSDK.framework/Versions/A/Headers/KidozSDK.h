@@ -112,10 +112,23 @@
 -(void)show;
 /*
  Description:
+ open the interstitial programmatically.
+ 
+ */
+-(void)showOnParentViewController:(UIViewController*)parentViewController withDelegate:(id<KIDOZInterstitialProtocol>)intersititialDelegate;
+
+/*
+ Description:
  close the the interstitial view programmatically
  
  */
 -(void)close;
+/*
+ Description:
+ returns YES if there is an ad loaded
+ 
+ */
+-(BOOL)isReady;
 @end
 
 

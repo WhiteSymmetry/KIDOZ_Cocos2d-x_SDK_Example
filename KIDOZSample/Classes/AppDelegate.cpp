@@ -75,6 +75,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     //KIODZ SDK Init
     KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();
     KIDOZBridge->initSDK("5", "i0tnrdwdtq0dm36cqcpg6uyuwupkj76s");
+    
     register_all_packages();
 
     // create a scene. it's an autorelease object

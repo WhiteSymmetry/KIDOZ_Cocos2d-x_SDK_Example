@@ -56,10 +56,11 @@ typedef enum PanelPosition
 //-----------------------------------------------------------------------
 @protocol KIDOZInterstitialProtocol <NSObject>
 
--(void) KIDOZInterstitialOpened:(int)feedID;
--(void) KIDOZInterstitialClosed:(int)feedID;
--(void) KIDOZInterstitialReady:(int)feedID;
-
+-(void) KIDOZInterstitialOpened:(int)interstitialID;
+-(void) KIDOZInterstitialClosed:(int)interstitialID;
+-(void) KIDOZInterstitialReady:(int)interstitialID;
+-(void) KIDOZInterstitialLoadFailed:(int)interstitialID;
+-(void) KIDOZInterstitialParentalLockOpend:(int)interstitialID;
 @end
 
 //-----------------------------------------------------------------------
@@ -115,6 +116,7 @@ typedef enum KIDOZExtensionType
     KIDOZ_EXTENSION_TYPE_CORONA = 7,
     KIDOZ_EXTENSION_TYPE_XCODE = 8
 }KIDOZExtensionType;
+
 
 
 #endif /* KIDOZInterfaces_h */

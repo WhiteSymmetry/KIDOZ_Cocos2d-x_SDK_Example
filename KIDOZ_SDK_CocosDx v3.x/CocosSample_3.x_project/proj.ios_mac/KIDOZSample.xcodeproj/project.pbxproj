@@ -12,8 +12,9 @@
 		1107053A1CC4F05000BA7D83 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110705391CC4F05000BA7D83 /* SystemConfiguration.framework */; };
 		1107053C1CC4F05A00BA7D83 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1107053B1CC4F05A00BA7D83 /* AdSupport.framework */; };
 		1107053E1CC4F09300BA7D83 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1107053D1CC4F09300BA7D83 /* CoreText.framework */; };
+		1162301E1D895BA3001138A0 /* KidozSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1162301D1D895BA3001138A0 /* KidozSDK.framework */; };
+		116230211D896C2D001138A0 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116230201D896C2D001138A0 /* WebKit.framework */; };
 		11AD7D3E1D0FF6AA00DC80A1 /* KidozSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11AD7D3D1D0FF6AA00DC80A1 /* KidozSDK.bundle */; };
-		11AD7D421D100BB900DC80A1 /* KidozSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11AD7D411D100BB900DC80A1 /* KidozSDK.framework */; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -116,8 +117,9 @@
 		110705391CC4F05000BA7D83 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		1107053B1CC4F05A00BA7D83 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		1107053D1CC4F09300BA7D83 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
+		1162301D1D895BA3001138A0 /* KidozSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KidozSDK.framework; sourceTree = "<group>"; };
+		116230201D896C2D001138A0 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		11AD7D3D1D0FF6AA00DC80A1 /* KidozSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KidozSDK.bundle; sourceTree = "<group>"; };
-		11AD7D411D100BB900DC80A1 /* KidozSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KidozSDK.framework; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -185,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116230211D896C2D001138A0 /* WebKit.framework in Frameworks */,
 				1107053E1CC4F09300BA7D83 /* CoreText.framework in Frameworks */,
 				1107053C1CC4F05A00BA7D83 /* AdSupport.framework in Frameworks */,
 				1107053A1CC4F05000BA7D83 /* SystemConfiguration.framework in Frameworks */,
@@ -198,7 +201,7 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
 				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
-				11AD7D421D100BB900DC80A1 /* KidozSDK.framework in Frameworks */,
+				1162301E1D895BA3001138A0 /* KidozSDK.framework in Frameworks */,
 				BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */,
 				D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */,
 				D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */,
@@ -280,7 +283,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				11AD7D411D100BB900DC80A1 /* KidozSDK.framework */,
+				116230201D896C2D001138A0 /* WebKit.framework */,
+				1162301D1D895BA3001138A0 /* KidozSDK.framework */,
 				11AD7D3D1D0FF6AA00DC80A1 /* KidozSDK.bundle */,
 				1107053D1CC4F09300BA7D83 /* CoreText.framework */,
 				1107053B1CC4F05A00BA7D83 /* AdSupport.framework */,

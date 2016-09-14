@@ -1,5 +1,5 @@
 #include "HelloWorldScene.h"
-
+#include "KIDOZCocos2dBridge.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -64,13 +64,20 @@ bool HelloWorld::init()
     this->addChild(label, 1);
 
     // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
+//    auto sprite = Sprite::create("HelloWorld.png");
 
     // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+//    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 
     // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+//    this->addChild(sprite, 0);
+    
+    
+    KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();
+    KIDOZBridge->setPanelReadyListener(panelReady);
+    KIDOZBridge->addPanelView(0, 1);
+    KIDOZBridge->addFeedButton(0, 0);
+
     
     return true;
 }
@@ -83,4 +90,11 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+}
+
+void HelloWorld::panelReady(int value)
+{
+    printf("panel ready c++");
+    KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();
+    KIDOZBridge->hidePanel(false);
 }

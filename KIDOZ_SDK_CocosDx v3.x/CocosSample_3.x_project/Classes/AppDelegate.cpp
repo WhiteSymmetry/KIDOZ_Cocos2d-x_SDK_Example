@@ -1,7 +1,10 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
-
+#include "KIDOZCocos2dBridge.h"
 USING_NS_CC;
+
+#define KIDOZ_DEVELOPER_ID "5"
+#define KIDOZ_DEVELOPER_TOKEN "i0tnrdwdtq0dm36cqcpg6uyuwupkj76s"
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(480, 320);
 static cocos2d::Size smallResolutionSize = cocos2d::Size(480, 320);
@@ -71,6 +74,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     {        
         director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
     }
+
+    KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();
+    KIDOZBridge->initSDK(KIDOZ_DEVELOPER_ID, KIDOZ_DEVELOPER_TOKEN);
+    
+
 
     register_all_packages();
 

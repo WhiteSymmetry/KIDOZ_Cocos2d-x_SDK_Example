@@ -28,6 +28,7 @@
 +(void)setExtensionName:(KIDOZExtensionType)extensionName;
 +(NSString *)getExtensionName;
 +(NSString *)getSDKVersion;
++(NSDictionary *)getDicFromNSString:(NSString *)input;
 @end
 
 #endif /* Utils_h */
