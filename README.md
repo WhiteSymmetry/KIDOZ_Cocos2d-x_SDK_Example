@@ -11,29 +11,26 @@ This Sample Application is strictly based on the original `SimpleGame` applicati
 ####Include the library (CocosDx 2.2.x)
 On Eclipse ADT you can include the library by doing the following:
 
- - Import `KidozSDK` library project to your Eclipse workspace.
- - Import `recyclerview` library project to your Eclipse workspace.
+ - Import `KIDOZ_SDK_Android` library project from `KIDOZ_SDK_CocosDx v2.x` folder to your Eclipse workspace.
  - Right click on your project, select `Properties`, in the window that appears select `Android`:
  - In the library section add KIDOZ SDK as a Library project.
  
   
 ### Including SDK in projects using CocosDx version 3.x
 
+This Sample Application is strictly based on the original `CocosSample_3.x_project` sample application that exists in main directory of `cocos2d-x-3.x`library folder. 
+
 ####Include the library  (CocosDx 3.x)
 On Eclipse ADT you can include the library by doing the following:
 
- - Copy all `.jar` files form KidozSDK/libs folder to your_project/libs folder
- - Copy all `.so`. files from KidozSDK/libs/armeabi folder to  your_project/libs/armeabi folder
- - Import `recyclerview` library project to your Eclipse workspace
- - Right click on your project, select `Properties`, in the window select `Android`, in the library section add `recyclerview` as a library project.
+ - Import `KIDOZ_SDK_Android` library project from `KIDOZ_SDK_CocosDx v3.x` folder to your Eclipse workspace.
+ - Right click on your project, select `Properties`, in the window that appears select `Android`:
+ - In the library section add KIDOZ SDK as a Library project.
  
-##### For sample application based on CocosDx 3.x download here:
- **https://s3.amazonaws.com/kidoz.test.bucket/CocosSample_3.x_project.zip**
-
+ 
 ####	Eclipse ADT
 
 **For how to use KIDOZ SDK and add it to Eclipse ADT please refer to https://github.com/Kidoz-SDK/KIDOZ_Android_SDK_Example-Eclipse-ADT **
-
 
 
 KIDOZ SDK Cocos2Dx Sample App (iOS)
