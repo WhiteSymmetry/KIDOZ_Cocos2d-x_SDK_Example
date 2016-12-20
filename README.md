@@ -19,7 +19,6 @@ In Your `Activity` that extends from `Cocos2dxActivity` in `onCreate` method put
 ```groovy
   // Initiate Kidoz SDK
   KidozSDKCocosDxBridge.init(this);
-}
 ``` 
 Example
 ```groovy
