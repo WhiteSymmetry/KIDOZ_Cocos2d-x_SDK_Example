@@ -6,7 +6,7 @@ KIDOZ SDK + Sample App
 **KIDOZ SDK and Sample App are compatible with Android 4.0 (API level 14) and above.**
 *Updated to KIDOZ SDK (Android) version 0.7.1* 
 
-## Include Kidoz SDK (Android) library in your projects (v0.7.1)
+## Include Kidoz SDK (Android) library in your projects For android build(v0.7.1)
 
 On Eclipse ADT you can include the library by doing the following:
 
@@ -111,14 +111,36 @@ Example:
     </application>
 </manifest>
 ``` 
- 
- 
- 
-### Include Kidoz SDK (IOS) library in your projects (v0.5.8)
-
-
 </br>
+ 
+## Include Kidoz SDK (IOS) library in your projects for IOS build (v0.5.8)
+1. Copy and add the KidozSDK.bundle and Kidoz.framework files to your project into the Frameworks section in xcode.
+2. Select Add Files to the project while selecting the ios folder (make sure that the copy option is checked) and select the KIDOZCocos2dBridge.h and KIDOZCocos2dBridge.mm files.
+// MISING STUFF
 
+
+## Adding KIDOZ SDK to your app
+
+
+1. In  AppDelegate.cpp add the following lines: 
+</br>
+`#include "KIDOZCocos2dBridge.h"` 
+</br>
+Add the following function calls to AppDelegate::applicationDidFinishLaunching()
+ `KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();`  
+ `KIDOZBridge->initSDK(<your publisher id>,<security token>);`
+
+2. In your app scene file (in the demo code HellowWorldScene.cpp) add the following lines: according to your selected KIDOZ widgets. Add the following include file: #include "KIDOZCocos2dBridge.h"
+
+ `KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();`
+   For panel use: `KIDOZBridge->addPanelView(<panel position>, <handle position>);`
+   For feed button use `KIDOZBridge->addFeedButton(<x position>, <y position>);`
+   
+3. You can add listeners by calling `KIDOZBridge->setPanelReadyListener(panelReady);`
+4. Other listeners can be found in KIDOZCocos2dBridge.h file
+
+For any question or assistance, please contact us at SDK@kidoz.net.
+</br>
 
 
 
@@ -132,24 +154,7 @@ The sample app can be found in the following directory: /KIDOZSample/proj.ios_ma
 The app shows the feed button and the panel widget.
 
 
-### Adding KIDOZ SDK to your app
 
-1. Copy and add the KidozSDK.bundle and Kidoz.framework files to your project into the Frameworks section in xcode.
-2. Select Add Files to the project while selecting the ios folder (make sure that the copy option is checked) and select the KIDOZCocos2dBridge.h and KIDOZCocos2dBridge.mm files.
-3. In  AppDelegate.cpp add the following lines: <br>
-```#include "KIDOZCocos2dBridge.h"``` <br>
-Add the following function calls to AppDelegate::applicationDidFinishLaunching()
- ```KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();```
-```KIDOZBridge->initSDK(<your publisher id>,<security token>);```
-4. In your app scene file (in the demo code HellowWorldScene.cpp) add the following lines: according to your selected KIDOZ widgets. Add the following include file: #include "KIDOZCocos2dBridge.h"
- ```KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();```
-   For panel use: ```KIDOZBridge->addPanelView(<panel position>, <handle position>);```
-   For feed button use" ```KIDOZBridge->addFeedButton(<x position>, <y position>);```
-5. You can add listeners by calling ```KIDOZBridge->setPanelReadyListener(panelReady);```
-6. Other listeners can be found in KIDOZCocos2dBridge.h file
-
-For any question or assistance, please contact us at SDK@kidoz.net.
-</br>
 
 License
 --------
