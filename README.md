@@ -27,8 +27,8 @@ Example
   	 protected void onCreate(Bundle savedInstanceState) {
 	       super.onCreate(savedInstanceState);
 
-        //Initiate Kidoz SDK bridge
-		      KidozSDKCocosDxBridge.init(this);
+               //Initiate Kidoz SDK bridge
+	       KidozSDKCocosDxBridge.init(this);
     }
  }
 ``` 
