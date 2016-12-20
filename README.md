@@ -3,7 +3,7 @@
 KIDOZ SDK Cocos2Dx Sample App (android)
 =======================================
 
-**KIDOZ SDK and the sample App are compatible with Android 4.0 (API level 14) and above.**
+**KIDOZ SDK + Sample App are compatible with Android 4.0 (API level 14) and above.**
 *Updated to KIDOZ SDK (Android) version 0.7.1* 
 
 ### Include Kidoz SDK (Android) library in your projects (v0.7.1)
