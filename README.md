@@ -6,7 +6,7 @@ KIDOZ SDK + Sample App
 **KIDOZ SDK and Sample App are compatible with Android 4.0 (API level 14) and above.**
 *Updated to KIDOZ SDK (Android) version 0.7.1* 
 
-### Include Kidoz SDK (Android) library in your projects (v0.7.1)
+## Include Kidoz SDK (Android) library in your projects (v0.7.1)
 
 On Eclipse ADT you can include the library by doing the following:
 
@@ -117,7 +117,7 @@ Example:
 ### Include Kidoz SDK (IOS) library in your projects (v0.5.8)
 
 
-
+</br>
 
 
 
