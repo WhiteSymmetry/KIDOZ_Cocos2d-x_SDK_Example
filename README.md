@@ -1,9 +1,9 @@
 <a href="url"><img src="https://github.com/Kidoz-SDK/Kidoz_Android_SDK_Example/blob/master/graphics/App%20icon.png" align="left" height="72" width="72" ></a>
 [<img src="https://kidoz-cdn.s3.amazonaws.com/wordpress/kidoz_small.gif" width="533px" height="300px">](https://www.youtube.com/watch?v=-ljFjRn7jeM)
-KIDOZ SDK Cocos2Dx Sample App (android)
+KIDOZ SDK + Sample App
 =======================================
 
-**KIDOZ SDK + Sample App are compatible with Android 4.0 (API level 14) and above.**
+**KIDOZ SDK and Sample App are compatible with Android 4.0 (API level 14) and above.**
 *Updated to KIDOZ SDK (Android) version 0.7.1* 
 
 ### Include Kidoz SDK (Android) library in your projects (v0.7.1)
