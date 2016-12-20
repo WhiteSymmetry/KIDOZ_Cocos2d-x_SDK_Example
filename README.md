@@ -4,35 +4,124 @@ KIDOZ SDK Cocos2Dx Sample App (android)
 =======================================
 
 **KIDOZ SDK and the sample App are compatible with Android 4.0 (API level 14) and above.**
-*Updated to KIDOZ SDK version 0.6.0* 
+*Updated to KIDOZ SDK (Android) version 0.7.1* 
 
-### Including SDK in projects using CocosDx version 2.2.x
+### Include Kidoz SDK (Android) library in your projects (v0.7.1)
 
-This Sample Application is strictly based on the original `SimpleGame` application that exists in the `samples` directory of `cocos2d-x-2.2.6`library. 
-
-####Include the library (CocosDx 2.2.x)
-On Eclipse ADT you can include the library by doing the following:
-
- - Import `KIDOZ_SDK_Android` library project from `KIDOZ_SDK_CocosDx v2.x` folder to your Eclipse workspace.
- - Right click on your project, select `Properties`, in the window that appears select `Android`:
- - In the library section add KIDOZ SDK as a Library project.
- 
-  
-### Including SDK in projects using CocosDx version 3.x
-
-This Sample Application is strictly based on the original `CocosSample_3.x_project` sample application that exists in main directory of `cocos2d-x-3.x`library folder. 
-
-####Include the library  (CocosDx 3.x)
 On Eclipse ADT you can include the library by doing the following:
 
  - Import `KIDOZ_SDK_Android` library project from `KIDOZ_SDK_CocosDx v3.x` folder to your Eclipse workspace.
  - Right click on your project, select `Properties`, in the window that appears select `Android`:
  - In the library section add KIDOZ SDK as a Library project.
  
- 
-####	Eclipse ADT
+In Your `Activity` that extends from `Cocos2dxActivity` in `onCreate` method put the folowing line:
 
-**For how to use KIDOZ SDK and add it to Eclipse ADT please refer to https://github.com/Kidoz-SDK/KIDOZ_Android_SDK_Example-Eclipse-ADT **
+```groovy
+  // Initiate Kidoz SDK
+  KidozSDKCocosDxBridge.init(this);
+}
+``` 
+Example
+```groovy
+
+ public class YourActivity extends Cocos2dxActivity {
+  	 protected void onCreate(Bundle savedInstanceState) {
+	       super.onCreate(savedInstanceState);
+
+        //Initiate Kidoz SDK bridge
+		      KidozSDKCocosDxBridge.init(this);
+    }
+ }
+``` 
+##### Update AndroidMainifest.xml file Definitions (IMPORTANT)
+For correct flow of the SDK, add the following line in your `AndroidMainifest.xml` file, for each `YourActivity` that uses the SDK functionality.
+```groovy
+ android:configChanges="screenLayout|screenSize|orientation|keyboardHidden|keyboard"
+``` 
+
+Also add the following permissions:
+
+```xml
+ <uses-permission android:name="android.permission.INTERNET" />
+ 
+ <!-- android:maxSdkVersion="19" is used to AVOID permission handling in Android 6.0 and above  -->  
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="19"/>
+ 
+``` 
+
+###### NOTICE!!!
+In case external SD access is needed and requiered to apply/handle `Android 6.0` Permissions request flow,
+add `WRITE_EXTERNAL_STORAGE` permission in the following format in your application `AndroidMainifest.xml` file:
+
+```xml
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"  tools:node="replace"/>
+ <!--  tools:node="replace" is used to replace default libray defenition--> 
+``` 
+To use `tools:node="replace"` add `xmlns:tools="http://schemas.android.com/tools"` in the `<manifest ...  >` tag of `AndroidMainifest.xml` file. 
+ 
+ Also add the following lines in the `<Application> ... </Application>` tag of the `AndroidMainifest.xml` file
+```xml
+ <receiver android:name="com.kidoz.sdk.api.receivers.SdkReceiver" >
+       <intent-filter>
+            <action android:name="android.intent.action.PACKAGE_ADDED" android:enabled="true"/>
+            <data android:scheme="package" />
+       </intent-filter>
+  </receiver>
+  
+  <activity android:name="com.kidoz.sdk.api.ui_views.interstitial.KidozAdActivity"
+                  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+  
+  <activity android:name="com.kidoz.sdk.api.ui_views.video_unit.VideoUnitActivity"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+``` 
+
+Example:
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="your.package.name">
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    
+     <!-- android:maxSdkVersion="19" is used to avoid permission handling in Android 6.0 and above (For developer convenience) --> 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="19"/>
+   
+    <application>
+        <!-- Your main activity-->
+        <activity
+            ...
+            android:configChanges="screenLayout|screenSize|orientation|keyboardHidden|keyboard"
+            ...
+          >
+	</activity>
+        ...
+	        <receiver android:name="com.kidoz.sdk.api.receivers.SdkReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        
+         <activity android:name="com.kidoz.sdk.api.ui_views.interstitial.KidozAdActivity"
+                  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+                  
+        <activity android:name="com.kidoz.sdk.api.ui_views.video_unit.VideoUnitActivity"
+                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+                  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+        ...
+    </application>
+</manifest>
+``` 
+ 
+ 
+ 
+### Include Kidoz SDK (IOS) library in your projects (v0.5.8)
+
+
+
+
+
+
 
 
 KIDOZ SDK Cocos2Dx Sample App (iOS)
