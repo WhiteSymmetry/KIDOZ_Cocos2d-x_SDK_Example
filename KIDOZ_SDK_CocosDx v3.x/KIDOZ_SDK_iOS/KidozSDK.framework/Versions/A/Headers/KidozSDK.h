@@ -104,6 +104,17 @@
  
  */
 -(void)loadAd;
+
+/*
+ Description:
+ load a new add with type can be normal (Interstitial) or rewarded
+ 
+ Parameters:
+ 
+ */
+-(void)loadAdWithType:(KIDOZInterstitialMode)adType;
+
+
 /*
  Description:
  open the interstitial programmatically.
@@ -129,6 +140,14 @@
  
  */
 -(BOOL)isReady;
+
+/*
+ Description:
+ returns YES if page was loaded
+ 
+ */
+-(BOOL)isLoaded;
+
 @end
 
 
@@ -156,6 +175,8 @@
 
 
 + (KidozSDK *)instance;
+
+-(void) setup:(UIWindow *)window publisherID:(NSString *)publisherID securityToken:(NSString *)securityToken withDelegate:(id<KIDOZSDKProtocol>)delegate;
 
 /*
  Description:

@@ -61,6 +61,8 @@ typedef enum PanelPosition
 -(void) KIDOZInterstitialReady:(int)interstitialID;
 -(void) KIDOZInterstitialLoadFailed:(int)interstitialID;
 -(void) KIDOZInterstitialParentalLockOpend:(int)interstitialID;
+-(void) KIDOZInterstitialOnRewarded;
+-(void) KIDOZInterstitialonRewardedVideoStarted;
 @end
 
 //-----------------------------------------------------------------------
@@ -91,6 +93,15 @@ typedef enum BannerPosition
     bpBottomleft = 4,
     bpBottomRight = 5
 }KIDOZBannerPosition;
+
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+typedef enum InterstitialMode
+{
+    imInterstitial = 0,
+    imRewarded = 1
+}KIDOZInterstitialMode;
+
 
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------

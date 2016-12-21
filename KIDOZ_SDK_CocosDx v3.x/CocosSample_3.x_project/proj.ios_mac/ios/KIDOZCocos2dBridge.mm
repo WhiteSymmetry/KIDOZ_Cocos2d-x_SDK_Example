@@ -8,8 +8,10 @@
 
 
 
+///////////////////////////////////////////////
+#pragma label --callback object from objective c to c++ --
 
-@interface KIDOZCocos2dObjectListners : NSObject <KIDOZFeedProtocol,KIDOZPanelProtocol>
+@interface KIDOZCocos2dObjectListners : NSObject <KIDOZFeedProtocol,KIDOZPanelProtocol,KIDOZInterstitialProtocol>
 {
     
 }
@@ -26,27 +28,27 @@
 
 -(void) KIDOZFeedOpened:(int)feedID
 {
-    KIDOZCocos2dBridge::KIDOZFeedOpened(feedID);
+    KIDOZCocos2dBridge::KIDOZFeedOpened();
 }
 -(void) KIDOZFeedClosed:(int)feedID
 {
-    KIDOZCocos2dBridge::KIDOZFeedClosed(feedID);
+    KIDOZCocos2dBridge::KIDOZFeedClosed();
 }
 -(void) KIDOZFeedReady:(int)feedID
 {
-    KIDOZCocos2dBridge::KIDOZFeedReady(feedID);
+    KIDOZCocos2dBridge::KIDOZFeedReady();
 }
 -(void) KIDOZPanelOpened:(int)panelID
 {
-    KIDOZCocos2dBridge::KIDOZPanelOpened( panelID);
+    KIDOZCocos2dBridge::KIDOZPanelOpened( );
 }
 -(void) KIDOZPanelClosed:(int)panelID
 {
-    KIDOZCocos2dBridge::KIDOZPanelClosed(panelID);
+    KIDOZCocos2dBridge::KIDOZPanelClosed();
 }
 -(void) KIDOZPanelReady:(int)panelID
 {
-    KIDOZCocos2dBridge::KIDOZPanelReady(panelID);
+    KIDOZCocos2dBridge::KIDOZPanelReady();
 }
 -(void) KIDOZPlayerStarted
 {
@@ -55,15 +57,53 @@
 -(void) KIDOZPlayerEnded
 {
     KIDOZCocos2dBridge::KIDOZPlayerEnded();
+    
 }
+
+-(void) KIDOZInterstitialOpened:(int)interstitialID
+{
+    KIDOZCocos2dBridge::KIDOZInterstitialOpened();
+}
+
+-(void) KIDOZInterstitialClosed:(int)interstitialID
+{
+    KIDOZCocos2dBridge::KIDOZInterstitialClosed();
+}
+
+-(void) KIDOZInterstitialReady:(int)interstitialID
+{
+    KIDOZCocos2dBridge::KIDOZInterstitialReady();
+}
+
+-(void) KIDOZInterstitialLoadFailed:(int)interstitialID
+{
+    KIDOZCocos2dBridge::KIDOZInterstitialLoadFailed();
+}
+
+
+-(void) KIDOZInterstitialOnRewarded
+{
+    KIDOZCocos2dBridge::KIDOZInterstitialRewardedEvent();
+}
+
+-(void) KIDOZInterstitialonRewardedVideoStarted
+{
+    KIDOZCocos2dBridge::KIDOZInterstitialRewardedVideoStarted();
+}
+
+
+
 @end
 
 
 
 KIDOZPanelObject *mCocos2dPanel;
+KIDOZInterstitialObject *mCocos2dInterstitial;
 KIDOZFeedObject *mCocos2dFeed;
 KIDOZCocos2dObjectListners  *mCocos2dListnerObject;
 
+///////////////////////////////////////////////
+#pragma label --callback c++ object function implementions --
 
 
 int KIDOZCocos2dBridge::addFeedButton(float xPos, float yPos)
@@ -74,41 +114,40 @@ int KIDOZCocos2dBridge::addFeedButton(float xPos, float yPos)
     mCocos2dFeed = [[KidozSDK instance]generateFeedButtonWithViewController:[[[UIApplication sharedApplication] keyWindow] rootViewController]  inFrame:rect delegate:mCocos2dListnerObject];
     [mCocos2dFeed retain];
     NSLog(@"oooOri Native in addFeedButton");
+    
     return 0;
 }
 
-int KIDOZCocos2dBridge::addFeedButtonWithSize(float xPos, float yPos, float size)
-{
-    
-    CGRect rect = CGRectMake(xPos, yPos, size, size);
-    mCocos2dFeed = [[KidozSDK instance]generateFeedButtonWithViewController:[[[UIApplication sharedApplication] keyWindow] rootViewController]  inFrame:rect delegate:mCocos2dListnerObject];
-    return 0;
-}
+//void KIDOZCocos2dBridge::addFeedButtonWithSize(float xPos, float yPos, float size)
+//{
+//    
+//    CGRect rect = CGRectMake(xPos, yPos, size, size);
+//    mCocos2dFeed = [[KidozSDK instance]generateFeedButtonWithViewController:[[[UIApplication sharedApplication] keyWindow] rootViewController]  inFrame:rect delegate:mCocos2dListnerObject];
+//}
 int KIDOZCocos2dBridge::showFeedView()
 {
     [mCocos2dFeed open];
-    
     return 0;
+
 }
 
 int KIDOZCocos2dBridge::dismissFeedView()
 {
     [mCocos2dFeed close];
-    
     return 0;
+
 }
 
 int KIDOZCocos2dBridge::changeFeedButtonVisibility(bool visable)
 {
    
     [mCocos2dFeed hideButton:visable];
-    
     return 0;
 }
 
 //------------------------
 //------------------------
-int KIDOZCocos2dBridge::addPanelView(int panelPosition, int handlePosition){
+int KIDOZCocos2dBridge::addPanelView(PanelType panelPosition, PanelHandlePosition handlePosition){
     
     static UIViewController *rootView;
 
@@ -121,21 +160,10 @@ int KIDOZCocos2dBridge::addPanelView(int panelPosition, int handlePosition){
         
         [mCocos2dPanel retain];
     });
-    
-    
     return 0;
 }
 
-int KIDOZCocos2dBridge::setPanelViewColor(char* colorString){
-    
-    
-    
-    NSString *colorIn = [NSString stringWithUTF8String:(char*)colorString];
-    
-//    UIColor *color = [KIDOZUtils getUIColorFromString:colorIn];
-    
-    return 0;
-}
+
 
 int KIDOZCocos2dBridge::changePanelVisibility(bool visable){
     
@@ -152,47 +180,25 @@ int KIDOZCocos2dBridge::collapsePanelView()
 
 int KIDOZCocos2dBridge::expandPanelView()
 {
-    [mCocos2dPanel expend];
+    [mCocos2dPanel expand];
     
     return 0;
 }
 
-bool KIDOZCocos2dBridge::isPanelExpanded()
+bool KIDOZCocos2dBridge::getIsPanelExpanded()
 {
     
     return NO;
 }
 
-void KIDOZCocos2dBridge::hidePanel(bool hide)
+
+//------------------------
+//------------------------
+
+//------------------------
+//------------------------
+int KIDOZCocos2dBridge::addFlexiView(FlexiPosition initialPosition, bool autoShow)
 {
-    
-    [mCocos2dPanel hide:hide];
-}
-//------------------------
-//------------------------
-int KIDOZCocos2dBridge::addBannerView(){
-    //oooOri todo: implement missing function
-    return -1;
-}
-
-int KIDOZCocos2dBridge::changeBannerPosition(){
-    //oooOri todo: implement missing function
-    return -1;
-}
-
-int KIDOZCocos2dBridge::showBannerView(){
-    //oooOri todo: implement missing function
-    return -1;
-}
-
-int KIDOZCocos2dBridge::hideBannerView(){
-    //oooOri todo: implement missing function
-    return -1;
-}
-
-//------------------------
-//------------------------
-int KIDOZCocos2dBridge::addFlexiView(){
     //oooOri todo: implement missing function
     return -1;
 }
@@ -207,21 +213,59 @@ int KIDOZCocos2dBridge::hideFlexiView(){
     return -1;
 }
 
-int KIDOZCocos2dBridge::getIsFlexiViewVisible(){
+bool KIDOZCocos2dBridge::getIsFlexiViewVisible(){
     //oooOri todo: implement missing function
     return -1;
 }
 
 
-int KIDOZCocos2dBridge::printToastLog(char *message)
+
+//------------------------
+//------------------------
+int KIDOZCocos2dBridge::loadInterstitial(InterstitialAdType ad_type, bool autoShowOnLoad)
+{
+    
+    [mCocos2dInterstitial loadAdWithType:(KIDOZInterstitialMode)(ad_type)];
+//    if (mInterstitial.isReady == YES)
+//    {
+//        [mInterstitial showOnParentViewController:self withDelegate:self];
+//    }
+//    else
+//    {
+//        
+//        [mInterstitial loadAdWithType:imRewarded];
+//    }
+
+    return 0;
+}
+
+int KIDOZCocos2dBridge::showInterstitial()
+{
+    [mCocos2dInterstitial showOnParentViewController:[[[UIApplication sharedApplication] keyWindow] rootViewController] withDelegate:mCocos2dListnerObject];
+    return 0;
+}
+
+bool KIDOZCocos2dBridge::getIsInterstitialLoaded()
+{
+    return NO;
+}
+
+//------------------------
+//------------------------
+void showVideoUnit()
+{
+    
+}
+
+
+void KIDOZCocos2dBridge::printToastLog(char *message)
 {
     
     NSString *debugMsg = [NSString stringWithUTF8String:(char*)message];
     
     NSLog(@"KIDOZ SDK: %@",debugMsg);
-    return 0;
+    
 }
-
 
 int KIDOZCocos2dBridge::initSDK(char *pubID, char *secToken){
     
@@ -237,9 +281,31 @@ int KIDOZCocos2dBridge::initSDK(char *pubID, char *secToken){
 //    [[KidozSDK instance]init:nil publisherID:publisherID securetyToken:secureityToken withDelegate:nil withExtensionType:@"Cocos2d"];
     [[KidozSDK instance]init:nil publisherID:publisherID securityToken:secureityToken withDelegate:nil withExtensionType:KIDOZ_EXTENSION_TYPE_COCOS_DX resourceInExternalBundle:YES];
     [KIDOZUtils setResourceInBundle:YES];
+    
+    static UIViewController *rootView;
+    
+    rootView = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    
+    mCocos2dInterstitial = [[KidozSDK instance]generateInterstitialWithViewController:rootView delegate:mCocos2dListnerObject];
+    
+    [mCocos2dInterstitial retain];
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        
+//        
+//        rootView = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+//        
+//        mCocos2dInterstitial = [[KidozSDK instance]generateInterstitialWithViewController:rootView delegate:mCocos2dListnerObject];
+//        
+//        [mCocos2dInterstitial retain];
+//    });
+    
+    
     return 0;
 }
 
+///////////////////////////////////////////////
+#pragma label --listeners setting--
 void KIDOZCocos2dBridge::setFeedOpenedListener(KIDOZListener name)
 {
     mFeedOpenedListener = name;
@@ -268,19 +334,85 @@ void KIDOZCocos2dBridge::setPlayerStartedListener(KIDOZListener name)
 {
     mPlayerStartedListener = name;
 }
-void KIDOZCocos2dBridge::setPlayerEndedListenerListener(KIDOZListener name)
+void KIDOZCocos2dBridge::setPlayerEndedListener(KIDOZListener name)
 {
     mPlayerEndedListener = name;
 }
 
-KIDOZListener mFeedOpenedListener;
-KIDOZListener mFeedClosedListener;
-KIDOZListener mFeedReadyListener;
-KIDOZListener mPanelOpenedListener;
-KIDOZListener mPanelClosedListener;
-KIDOZListener mPanelReadyListener;
-KIDOZListener mPlayerStartedListener;
-KIDOZListener mPlayerEndedListener;
+void KIDOZCocos2dBridge::setFlexiViewReadyListener(KIDOZListener name)
+{
+    mFlexiViewReadyListener = name;
+}
+
+void KIDOZCocos2dBridge::setFlexiViewVisibleListener(KIDOZListener name)
+{
+    mFlexiViewVisibleListener = name;
+}
+
+void KIDOZCocos2dBridge::setFlexiViewHiddenListener(KIDOZListener name)
+{
+    mFlexiViewHiddenListener = name;
+}
+
+void KIDOZCocos2dBridge::setInterstitialOpenedListener(KIDOZListener name)
+{
+    mInterstitialOpenedListener = name;
+}
+
+void KIDOZCocos2dBridge::setInterstitialClosedListener(KIDOZListener name)
+{
+    mInterstitialClosedListener = name;
+}
+
+void KIDOZCocos2dBridge::setInterstitialReadyListener(KIDOZListener name)
+{
+    mInterstitialReadyListener = name;
+}
+
+void KIDOZCocos2dBridge::setInterstitialLoadFailedListener(KIDOZListener name)
+{
+    mInterstitialLoadFailedListener = name;
+}
+
+void KIDOZCocos2dBridge::setInterstitialRewardedVideoStartedListener(KIDOZListener name)
+{
+    mInterstitialRewardedVideoStartedListener = name;
+}
+
+void KIDOZCocos2dBridge::setInterstitialRewardedEventListener(KIDOZListener name)
+{
+    mInterstitialRewardedEventListener = name;
+}
+
+void KIDOZCocos2dBridge::setVideoUnitOpenListener(KIDOZListener name)
+{
+    mVideoUnitOpenListener = name;
+}
+
+void KIDOZCocos2dBridge::setVideoUnitCloseListener(KIDOZListener name)
+{
+    mVideoUnitCloseListener = name;
+}
+
+void KIDOZCocos2dBridge::setVideoUnitReadyListener(KIDOZListener name)
+{
+    mVideoUnitReadyListener = name;
+}
+
+
+
+
+///////////////////////////////////////////////
+#pragma label --function declaration setting--
+// not used defined in h file
+//KIDOZListener mFeedOpenedListener;
+//KIDOZListener mFeedClosedListener;
+//KIDOZListener mFeedReadyListener;
+//KIDOZListener mPanelOpenedListener;
+//KIDOZListener mPanelClosedListener;
+//KIDOZListener mPanelReadyListener;
+//KIDOZListener mPlayerStartedListener;
+//KIDOZListener mPlayerEndedListener;
 
 //////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
@@ -295,7 +427,11 @@ KIDOZCocos2dBridge *KIDOZCocos2dBridge::getInstance()
     return g_KIDOZBridgeInstance;
 }
 
-void KIDOZCocos2dBridge::KIDOZFeedOpened(int feedID)
+
+///////////////////////////////////////////////
+#pragma label --callback c++ object function implementions --
+
+void KIDOZCocos2dBridge::KIDOZFeedOpened()
 {
     if (g_KIDOZBridgeInstance==NULL)
     {
@@ -304,10 +440,10 @@ void KIDOZCocos2dBridge::KIDOZFeedOpened(int feedID)
     
     if (g_KIDOZBridgeInstance->mFeedOpenedListener != NULL)
     {
-        g_KIDOZBridgeInstance->mFeedOpenedListener(feedID);
+        g_KIDOZBridgeInstance->mFeedOpenedListener();
     }
 }
-void KIDOZCocos2dBridge::KIDOZFeedClosed(int feedID)
+void KIDOZCocos2dBridge::KIDOZFeedClosed()
 {
     if (g_KIDOZBridgeInstance==NULL)
     {
@@ -316,10 +452,10 @@ void KIDOZCocos2dBridge::KIDOZFeedClosed(int feedID)
     
     if (g_KIDOZBridgeInstance->mFeedClosedListener != NULL)
     {
-        g_KIDOZBridgeInstance->mFeedClosedListener(feedID);
+        g_KIDOZBridgeInstance->mFeedClosedListener();
     }
 }
-void KIDOZCocos2dBridge::KIDOZFeedReady(int feedID)
+void KIDOZCocos2dBridge::KIDOZFeedReady()
 {
     if (g_KIDOZBridgeInstance==NULL)
     {
@@ -328,10 +464,10 @@ void KIDOZCocos2dBridge::KIDOZFeedReady(int feedID)
     
     if (g_KIDOZBridgeInstance->mFeedReadyListener != NULL)
     {
-        g_KIDOZBridgeInstance->mFeedReadyListener(feedID);
+        g_KIDOZBridgeInstance->mFeedReadyListener();
     }
 }
-void KIDOZCocos2dBridge::KIDOZPanelOpened(int feedID)
+void KIDOZCocos2dBridge::KIDOZPanelOpened()
 {
     if (g_KIDOZBridgeInstance==NULL)
     {
@@ -340,10 +476,10 @@ void KIDOZCocos2dBridge::KIDOZPanelOpened(int feedID)
     
     if (g_KIDOZBridgeInstance->mPanelOpenedListener != NULL)
     {
-        g_KIDOZBridgeInstance->mPanelOpenedListener(feedID);
+        g_KIDOZBridgeInstance->mPanelOpenedListener();
     }
 }
-void KIDOZCocos2dBridge::KIDOZPanelClosed(int feedID)
+void KIDOZCocos2dBridge::KIDOZPanelClosed()
 {
     if (g_KIDOZBridgeInstance==NULL)
     {
@@ -352,10 +488,10 @@ void KIDOZCocos2dBridge::KIDOZPanelClosed(int feedID)
     
     if (g_KIDOZBridgeInstance->mPanelClosedListener != NULL)
     {
-        g_KIDOZBridgeInstance->mPanelClosedListener(feedID);
+        g_KIDOZBridgeInstance->mPanelClosedListener();
     }
 }
-void KIDOZCocos2dBridge::KIDOZPanelReady(int feedID)
+void KIDOZCocos2dBridge::KIDOZPanelReady()
 {
     if (g_KIDOZBridgeInstance==NULL)
     {
@@ -364,7 +500,7 @@ void KIDOZCocos2dBridge::KIDOZPanelReady(int feedID)
     
     if (g_KIDOZBridgeInstance->mPanelReadyListener != NULL)
     {
-        g_KIDOZBridgeInstance->mPanelReadyListener(feedID);
+        g_KIDOZBridgeInstance->mPanelReadyListener();
     }
 }
 void KIDOZCocos2dBridge::KIDOZPlayerStarted()
@@ -376,7 +512,7 @@ void KIDOZCocos2dBridge::KIDOZPlayerStarted()
     
     if (g_KIDOZBridgeInstance->mPlayerStartedListener != NULL)
     {
-        g_KIDOZBridgeInstance->mPlayerStartedListener(0);
+        g_KIDOZBridgeInstance->mPlayerStartedListener();
     }
 }
 void KIDOZCocos2dBridge::KIDOZPlayerEnded()
@@ -388,9 +524,130 @@ void KIDOZCocos2dBridge::KIDOZPlayerEnded()
     
     if (g_KIDOZBridgeInstance->mPlayerEndedListener != NULL)
     {
-        g_KIDOZBridgeInstance->mPlayerEndedListener(0);
+        g_KIDOZBridgeInstance->mPlayerEndedListener();
     }
 }
+
+void KIDOZCocos2dBridge::KIDOZFlexiViewReady()
+{
+    if (g_KIDOZBridgeInstance==NULL)
+    {
+        return;
+    }
+    
+    if (g_KIDOZBridgeInstance->mFlexiViewReadyListener != NULL)
+    {
+        g_KIDOZBridgeInstance->mPlayerEndedListener();
+    }
+}
+
+void KIDOZCocos2dBridge::KIDOZFlexiViewVisible()
+{
+    if (g_KIDOZBridgeInstance==NULL)
+    {
+        return;
+    }
+    
+    if (g_KIDOZBridgeInstance->mFlexiViewVisibleListener != NULL)
+    {
+        g_KIDOZBridgeInstance->mFlexiViewVisibleListener();
+    }
+}
+
+void KIDOZCocos2dBridge::KIDOZFlexiViewHidden()
+{
+    if (g_KIDOZBridgeInstance==NULL)
+    {
+        return;
+    }
+    
+    if (g_KIDOZBridgeInstance->mFlexiViewHiddenListener != NULL)
+    {
+        g_KIDOZBridgeInstance->mFlexiViewHiddenListener();
+    }
+}
+
+
+
+void KIDOZCocos2dBridge::KIDOZInterstitialOpened()
+{
+    if (g_KIDOZBridgeInstance==NULL)
+    {
+        return;
+    }
+    
+    if (g_KIDOZBridgeInstance->mInterstitialOpenedListener != NULL)
+    {
+        g_KIDOZBridgeInstance->mInterstitialOpenedListener();
+    }
+}
+
+void KIDOZCocos2dBridge::KIDOZInterstitialClosed()
+{
+    if (g_KIDOZBridgeInstance==NULL)
+    {
+        return;
+    }
+    
+    if (g_KIDOZBridgeInstance->mInterstitialClosedListener != NULL)
+    {
+        g_KIDOZBridgeInstance->mInterstitialClosedListener();
+    }
+}
+
+
+void KIDOZCocos2dBridge::KIDOZInterstitialReady()
+{
+    if (g_KIDOZBridgeInstance==NULL)
+    {
+        return;
+    }
+    
+    if (g_KIDOZBridgeInstance->mInterstitialReadyListener != NULL)
+    {
+        g_KIDOZBridgeInstance->mInterstitialReadyListener();
+    }
+}
+
+void KIDOZCocos2dBridge::KIDOZInterstitialLoadFailed()
+{
+    if (g_KIDOZBridgeInstance==NULL)
+    {
+        return;
+    }
+    
+    if (g_KIDOZBridgeInstance->mInterstitialLoadFailedListener != NULL)
+    {
+        g_KIDOZBridgeInstance->mInterstitialLoadFailedListener();
+    }
+}
+
+void KIDOZCocos2dBridge::KIDOZInterstitialRewardedVideoStarted()
+{
+    if (g_KIDOZBridgeInstance==NULL)
+    {
+        return;
+    }
+    
+    if (g_KIDOZBridgeInstance->mInterstitialRewardedVideoStartedListener != NULL)
+    {
+        g_KIDOZBridgeInstance->mInterstitialRewardedVideoStartedListener();
+    }
+}
+
+void KIDOZCocos2dBridge::KIDOZInterstitialRewardedEvent()
+{
+    if (g_KIDOZBridgeInstance==NULL)
+    {
+        return;
+    }
+    
+    if (g_KIDOZBridgeInstance->mInterstitialRewardedEventListener != NULL)
+    {
+        g_KIDOZBridgeInstance->mInterstitialRewardedEventListener();
+    }
+}
+
 
 
 

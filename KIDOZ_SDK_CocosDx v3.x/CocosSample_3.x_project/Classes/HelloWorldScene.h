@@ -12,11 +12,13 @@ public:
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
-    
-    static void panelReady(int value);
+    static void interstitialReady();
+    static void panelReady();
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+    
+   
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -75,6 +75,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setContentScaleFactor(MIN(smallResolutionSize.height/designResolutionSize.height, smallResolutionSize.width/designResolutionSize.width));
     }
 
+    
+    
+    //my code
+    CCFileUtils *fileUtils = CCFileUtils::sharedFileUtils();
+    std::vector<std::string> searchPaths = fileUtils->getSearchPaths();
+    fileUtils->setSearchPaths(searchPaths);
+    
+    
     KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();
     KIDOZBridge->initSDK(KIDOZ_DEVELOPER_ID, KIDOZ_DEVELOPER_TOKEN);
     

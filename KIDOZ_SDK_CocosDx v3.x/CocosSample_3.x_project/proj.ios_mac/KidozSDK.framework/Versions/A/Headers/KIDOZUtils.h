@@ -28,6 +28,7 @@
 +(void)setExtensionName:(KIDOZExtensionType)extensionName;
 +(NSString *)getExtensionName;
 +(NSString *)getSDKVersion;
++(NSString *)getAPIVersion;
 +(NSDictionary *)getDicFromNSString:(NSString *)input;
 @end
 

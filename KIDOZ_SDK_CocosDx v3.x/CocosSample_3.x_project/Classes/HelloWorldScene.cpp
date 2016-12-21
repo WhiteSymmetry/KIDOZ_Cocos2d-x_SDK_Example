@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "KIDOZCocos2dBridge.h"
+#include "ui/CocosGUI.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -27,6 +28,7 @@ bool HelloWorld::init()
         return false;
     }
     
+    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -48,6 +50,28 @@ bool HelloWorld::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
 
+    
+//    auto button = cocos2d::ui::Button::create("normal_image.png", "selected_image.png", "disabled_image.png");
+//    button->setTitleText("Button Text");
+//    button->setPosition(Vec2(origin.x + 100 ,
+//                            origin.y + visibleSize.height/2 ));
+//    button->addTouchEventListener([&](Ref* sender, cocos2d::ui::Widget::TouchEventType type){
+//        switch (type)
+//        {
+//            case ui::Widget::TouchEventType::BEGAN:
+//                log("touch began");
+//                break;
+//            case ui::Widget::TouchEventType::ENDED:
+//                KIDOZCocos2dBridge::getInstance()->loadInterstitial(KIDOZCocos2dBridge::InterstitialAdType::AD_TYPE_INTERSTIAL, false);
+//                log("touch end");
+//                break;
+//            default:
+//                break;
+//        }
+//    });
+//    this->addChild(button);
+    
+    
     /////////////////////////////
     // 3. add your codes below...
 
@@ -61,27 +85,35 @@ bool HelloWorld::init()
                             origin.y + visibleSize.height - label->getContentSize().height));
 
     // add the label as a child to this layer
-    this->addChild(label, 1);
+    this->addChild(label);
 
+    
+    
+    
+    
     // add "HelloWorld" splash screen"
-//    auto sprite = Sprite::create("HelloWorld.png");
+//    auto sprite = Sprite::create("HelloWorld");
 
     // position the sprite on the center of the screen
 //    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 
     // add the sprite as a child to this layer
-//    this->addChild(sprite, 0);
+//    this->addChild(sprite);
     
     
     KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();
     KIDOZBridge->setPanelReadyListener(panelReady);
-    KIDOZBridge->addPanelView(0, 1);
+    KIDOZBridge->setInterstitialReadyListener(interstitialReady);
+    KIDOZBridge->addPanelView(KIDOZCocos2dBridge::PANEL_TYPE_BOTTOM, KIDOZCocos2dBridge::PANEL_HANDLE_CENTER);
     KIDOZBridge->addFeedButton(0, 0);
-
+    KIDOZCocos2dBridge::getInstance()->loadInterstitial(KIDOZCocos2dBridge::InterstitialAdType::AD_TYPE_INTERSTIAL, false);
+    
+    
+    
+    
     
     return true;
 }
-
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
@@ -92,9 +124,18 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #endif
 }
 
-void HelloWorld::panelReady(int value)
+void HelloWorld::panelReady()
 {
     printf("panel ready c++");
     KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();
-    KIDOZBridge->hidePanel(false);
+   
 }
+
+
+void HelloWorld::interstitialReady()
+{
+    printf("interstitial ready c++");
+    KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();
+    KIDOZBridge->showInterstitial();
+}
+
