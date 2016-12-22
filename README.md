@@ -113,13 +113,13 @@ Example:
 ``` 
 </br>
  
-## Include Kidoz SDK (IOS) library in your projects for IOS build (v0.5.8)
+## Include Kidoz SDK (IOS) library in your projects for IOS build (v0.5.7)
 1. Copy and add the KidozSDK.bundle and Kidoz.framework files to your project into the Frameworks section in xcode.
 2. Select Add Files to the project while selecting the ios folder (make sure that the copy option is checked) and select the KIDOZCocos2dBridge.h and KIDOZCocos2dBridge.mm files.
-// MISING STUFF
 
 
-## Adding KIDOZ SDK to your app
+
+### Adding KIDOZ SDK to your app
 
 
 1. In  AppDelegate.cpp add the following lines: 
