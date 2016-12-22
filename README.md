@@ -124,11 +124,18 @@ Example:
 
 1. In  AppDelegate.cpp add the following lines: 
 </br>
-`#include "KIDOZCocos2dBridge.h"` 
+Add the following function calls to AppDelegate::applicationDidFinishLaunching()
+```groovy
+    #include "KIDOZCocos2dBridge.h"  
+``` 
+
 </br>
 Add the following function calls to AppDelegate::applicationDidFinishLaunching()
- `KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();`  
- `KIDOZBridge->initSDK(<your publisher id>,<security token>);`
+```groovy
+   KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();   
+   KIDOZBridge->initSDK(<your publisher id>,<security token>); 
+``` 
+ 
 
 2. In your app scene file (in the demo code HellowWorldScene.cpp) add the following lines: according to your selected KIDOZ widgets. Add the following include file: #include "KIDOZCocos2dBridge.h"
 
