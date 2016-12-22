@@ -14,9 +14,9 @@ On Eclipse ADT you can include the library by doing the following:
 * Copy from folder/s `KIDOZ_SDK_Android/lib/armeabi` `libpl_droidsonroids_gif.so` file into your android project `lib/armeabi or/and ` ib/armeabi-v7a (Important! MAke sure the file exisits when compiling final .APK)
 * Copy from folder `KIDOZ_SDK_Android` `KIDOZCocos2dBridge.cpp` file into your project `jni`
 * Copy from folder `KIDOZ_SDK_Android` `KIDOZCocos2dBridge.h` file into your project cpp game code. `(KIDOZCocos2dBridge.h` is single for IOS and Android)
- 
- [<img src=" https://s3.amazonaws.com/kidoz-cdn/sdk/GitHub_Tutorial_Img/cocos_tuturoial_image_1.JPG" width="235px" height="450px">](https://www.youtube.com/watch?v=-ljFjRn7jeM)
-
+</br>
+<img src="https://s3.amazonaws.com/kidoz-cdn/sdk/GitHub_Tutorial_Img/cocos_tuturoial_image_1.JPG" width="230px" height="420px">
+ </br>
  
 In Your `Activity` that extends from `Cocos2dxActivity` in `onCreate` method put the folowing line:
 
