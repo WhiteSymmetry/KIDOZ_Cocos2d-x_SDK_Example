@@ -137,7 +137,16 @@ Add the following function calls to AppDelegate::applicationDidFinishLaunching()
 ``` 
  
 
-2. In your app scene file (in the demo code HellowWorldScene.cpp) add the following lines: according to your selected KIDOZ widgets. Add the following include file: #include "KIDOZCocos2dBridge.h"
+2. Interstitial / Rewarded  - In your app scene file (in the demo code HellowWorldScene.cpp) add the following lines: 
+```groovy
+   KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();   
+   KIDOZBridge->setInterstitialReadyListener(interstitialReady); // set interstitial listener
+   KIDOZBridge->loadInterstitial(KIDOZCocos2dBridge::InterstitialAdType::AD_TYPE_INTERSTIAL, false); //request interstitial/rewarded ad.
+   
+   KIDOZBridge->showInterstitial(); //show the interstitial/rewarded ad. must be called after the load succedded
+   
+``` 
+
 
  `KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();`
    For panel use: `KIDOZBridge->addPanelView(<panel position>, <handle position>);`
@@ -151,14 +160,6 @@ For any question or assistance, please contact us at SDK@kidoz.net.
 
 
 
-
-KIDOZ SDK Cocos2Dx Sample App (iOS)
-=======================================
-
-### Sample App
-The sample app can be found in the following directory: /KIDOZSample/proj.ios_mac
-
-The app shows the feed button and the panel widget.
 
 
 
