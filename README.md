@@ -147,13 +147,18 @@ Add the following function calls to AppDelegate::applicationDidFinishLaunching()
    
 ``` 
 
-
- `KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();`
-   For panel use: `KIDOZBridge->addPanelView(<panel position>, <handle position>);`
-   For feed button use `KIDOZBridge->addFeedButton(<x position>, <y position>);`
+3. Panel - In your app scene file (in the demo code HellowWorldScene.cpp) add the following lines:
+```groovy
+   KIDOZCocos2dBridge *KIDOZBridge = KIDOZCocos2dBridge::getInstance();
+   KIDOZBridge->setPlayerStartedListener(playerStarted);
+   KIDOZBridge->setPanelReadyListener(panelReady);
+   KIDOZBridge->setPanelOpenedListener(panelOpen);
+   KIDOZBridge->setPanelClosedListener(panelClose);
+   KIDOZBridge->addPanelView(<panel position>, <handle position>);
    
-3. You can add listeners by calling `KIDOZBridge->setPanelReadyListener(panelReady);`
-4. Other listeners can be found in KIDOZCocos2dBridge.h file
+``` 
+
+4. Other listeners and widget can be found in KIDOZCocos2dBridge.h file.
 
 For any question or assistance, please contact us at SDK@kidoz.net.
 </br>
