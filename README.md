@@ -74,9 +74,7 @@ To use `tools:node="replace"` add `xmlns:tools="http://schemas.android.com/tools
   <activity android:name="com.kidoz.sdk.api.ui_views.interstitial.KidozAdActivity"
                   android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
   
-  <activity android:name="com.kidoz.sdk.api.ui_views.video_unit.VideoUnitActivity"
-                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-                  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+ 
 ``` 
 
 Example:
@@ -107,10 +105,7 @@ Example:
         
          <activity android:name="com.kidoz.sdk.api.ui_views.interstitial.KidozAdActivity"
                   android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
-                  
-        <activity android:name="com.kidoz.sdk.api.ui_views.video_unit.VideoUnitActivity"
-                  android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-                  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+                 
         ...
     </application>
 </manifest>
