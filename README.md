@@ -18,10 +18,10 @@ On Eclipse ADT you can include the library by doing the following:
 <img src="https://s3.amazonaws.com/kidoz-cdn/sdk/GitHub_Tutorial_Img/cocos_tuturoial_image_1.JPG" width="230px" height="420px">
  </br>
  
- Add `KIDOZCocos2dBridge.cpp` to compilation source files in` Android.mk` file
+Add `KIDOZCocos2dBridge.cpp` to compilation source files in` Android.mk` file
  
- Example:
- ```groovy
+Example:
+```groovy
 	LOCAL_SRC_FILES := hellocpp/main.cpp \
 	 hellocpp/KIDOZCocos2dBridge.cpp \
          ../../Classes/AppDelegate.cpp \
