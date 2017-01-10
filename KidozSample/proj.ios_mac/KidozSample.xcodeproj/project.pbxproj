@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1164B8B11E0BD255000727F9 /* KidozSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1164B8AF1E0BD255000727F9 /* KidozSDK.bundle */; };
-		1164B8B21E0BD255000727F9 /* KidozSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1164B8B01E0BD255000727F9 /* KidozSDK.framework */; };
 		1164B8B41E0BD26A000727F9 /* KIDOZCocos2dBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1164B8B31E0BD26A000727F9 /* KIDOZCocos2dBridge.mm */; };
 		1164B8B61E0BD7E6000727F9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1164B8B51E0BD7E6000727F9 /* libsqlite3.tbd */; };
+		116605FE1E2519A0002C452A /* KidozSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 116605FC1E2519A0002C452A /* KidozSDK.bundle */; };
+		116605FF1E2519A0002C452A /* KidozSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116605FD1E2519A0002C452A /* KidozSDK.framework */; };
 		1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2d Mac.a */; };
 		1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB07180E9839004C840B /* libcocos2d iOS.a */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -107,10 +107,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1164B8AF1E0BD255000727F9 /* KidozSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KidozSDK.bundle; sourceTree = "<group>"; };
-		1164B8B01E0BD255000727F9 /* KidozSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KidozSDK.framework; sourceTree = "<group>"; };
 		1164B8B31E0BD26A000727F9 /* KIDOZCocos2dBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = KIDOZCocos2dBridge.mm; sourceTree = "<group>"; };
 		1164B8B51E0BD7E6000727F9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
+		116605FC1E2519A0002C452A /* KidozSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KidozSDK.bundle; sourceTree = "<group>"; };
+		116605FD1E2519A0002C452A /* KidozSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KidozSDK.framework; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -185,8 +185,8 @@
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				116605FF1E2519A0002C452A /* KidozSDK.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
-				1164B8B21E0BD255000727F9 /* KidozSDK.framework in Frameworks */,
 				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
 				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
 				BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */,
@@ -254,8 +254,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				1164B8AF1E0BD255000727F9 /* KidozSDK.bundle */,
-				1164B8B01E0BD255000727F9 /* KidozSDK.framework */,
+				116605FC1E2519A0002C452A /* KidozSDK.bundle */,
+				116605FD1E2519A0002C452A /* KidozSDK.framework */,
 				46880B8319C43A87006E1F66 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
@@ -477,7 +477,7 @@
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
-				1164B8B11E0BD255000727F9 /* KidozSDK.bundle in Resources */,
+				116605FE1E2519A0002C452A /* KidozSDK.bundle in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
