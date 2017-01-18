@@ -6,7 +6,7 @@ KIDOZ SDK + Sample App
 **KIDOZ SDK and Sample App are compatible with Android 4.0 (API level 14) and above.**
 **KIDOZ SDK and Sample App are compatible iOS version 8.2 and above.**
 
-*Updated to KIDOZ SDK (Android) version 0.7.1* 
+*Updated to KIDOZ SDK (Android) version 0.7.2* 
 *Updated to KIDOZ SDK (iOS) version 0.5.7* 
 
 ## Include Kidoz SDK (Android) library in your projects For android build(v0.7.1)
